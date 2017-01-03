@@ -19,7 +19,7 @@ installation, which is covered in INSTALL.txt in this same directory.)
 2. Install the pagination middleware.  Your settings file might look something
    like::
    
-       MIDDLEWARE_CLASSES = (
+       MIDDLEWARE = (
            # ...
            'pagination.middleware.PaginationMiddleware',
        )
