@@ -1,3 +1,5 @@
 Eric Florenzano <floguy@gmail.com>
+Tim Kamanin <tim@timonweb.com>
 Martin Mahner <martin@mahner.org>
+Thomas Orozco <thomas@orozco.fr>
 James Tauber <jtauber@gmail.com>

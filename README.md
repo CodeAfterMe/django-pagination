@@ -1,20 +1,21 @@
-from setuptools import setup, find_packages
+Why django-pagination-deux?
+---------------------------
 
-version = '2.0.0'
+As you may already know, the original ``django-pagination`` package has been abandoned some time ago.
+So I've decided to take over the project and create a ``deux`` version which is compatible with Django 1.10 and Python 3.
 
-LONG_DESCRIPTION = """
 How to use django-pagination-deux
 ---------------------------------
 
 ``django-pagination-deux`` allows for easy Digg-style pagination without modifying
 your views.
 
-There are really 5 steps to setting it up with your projects (not including
+There are really 5 steps to setting it up with your projects (not including 
 installation, which is covered in INSTALL.txt in this same directory.)
 
 1. List this application in the ``INSTALLED_APPS`` portion of your settings
    file.  Your settings file might look something like::
-
+   
        INSTALLED_APPS = (
            # ...
            'pagination',
@@ -23,7 +24,7 @@ installation, which is covered in INSTALL.txt in this same directory.)
 
 2. Install the pagination middleware.  Your settings file might look something
    like::
-
+   
        MIDDLEWARE = (
            # ...
            'pagination.middleware.PaginationMiddleware',
@@ -33,7 +34,7 @@ installation, which is covered in INSTALL.txt in this same directory.)
    Note that context processors are set by default implicitly, so to set them
    explicitly, you need to copy and paste this code into your under
    the value TEMPLATE_CONTEXT_PROCESSORS::
-
+   
         ("django.core.context_processors.auth",
         "django.core.context_processors.debug",
         "django.core.context_processors.i18n",
@@ -46,27 +47,27 @@ installation, which is covered in INSTALL.txt in this same directory.)
 
 
 5. Decide on a variable that you would like to paginate, and use the
-   autopaginate tag on that variable before iterating over it.  This could
+   autopaginate tag on that variable before iterating over it.  This could 
    take one of two forms (using the canonical ``object_list`` as an example
    variable):
-
+   
        {% autopaginate object_list %}
-
+       
    This assumes that you would like to have the default 20 results per page.
    If you would like to specify your own amount of results per page, you can
    specify that like so:
-
+   
        {% autopaginate object_list 10 %}
-
+   
    Note that this replaces ``object_list`` with the list for the current page, so
    you can iterate over the ``object_list`` like you normally would.
-
+   
 
 6. Now you want to display the current page and the available pages, so
    somewhere after having used autopaginate, use the paginate inclusion tag:
-
+   
        {% paginate %}
-
+   
    This does not take any arguments, but does assume that you have already
    called autopaginate, so make sure to do so first.
 
@@ -99,25 +100,3 @@ pagination tags.  Here's an overview:
     Determines whether an invalid page raises an ``Http404`` or just sets the
     ``invalid_page`` context variable.  ``True`` does the former and ``False``
     does the latter.
-"""
-
-setup(
-    name='django-pagination',
-    version=version,
-    description="django-pagination",
-    long_description=LONG_DESCRIPTION,
-    classifiers=[
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        "Framework :: Django",
-        "Environment :: Web Environment",
-    ],
-    keywords='pagination,django',
-    author='Tim Kamanin',
-    author_email='tim@timonweb.com',
-    url='https://github.com/CodeAfterMe/django-pagination-deux',
-    license='BSD',
-    packages=find_packages(),
-    include_package_data=True,
-    zip_safe=False,
-)

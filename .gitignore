@@ -1,4 +1,6 @@
-*.pyc
+*.py[cod]
+__pycache__
 dist
 *.egg-info
 build
+.idea

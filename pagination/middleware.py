@@ -1,14 +1,18 @@
+from django.utils.deprecation import MiddlewareMixin
+
+
 def get_page(self, suffix):
     """
     A function which will be monkeypatched onto the request to get the current
     integer representing the current page.
     """
     try:
-        return int(self.REQUEST['page%s' % suffix])
+        return int(self.GET['page%s' % suffix])
     except (KeyError, ValueError, TypeError):
         return 1
 
-class PaginationMiddleware(object):
+
+class PaginationMiddleware(MiddlewareMixin):
     """
     Inserts a variable representing the current page onto the request object if
     it exists in either **GET** or **POST** portions of the request.
